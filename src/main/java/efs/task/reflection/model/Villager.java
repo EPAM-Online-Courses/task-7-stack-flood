@@ -1,4 +1,4 @@
-package efs.task.reflection.model;
+//package efs.task.reflection.model;
 
 /**
  * TODO Dodaj w odpowiednich miejscach adnotacje utworzone w pakiecie
@@ -9,46 +9,51 @@ package efs.task.reflection.model;
  */
 public class Villager implements Fighter {
 
-  public static final String HIDDEN_VILLAGER_NAME = "Anonymous";
-  public static final String HIDDEN_VILLAGER_DESC = "Hidden from the world, can hack anything that uses electricity";
+    public static final String HIDDEN_VILLAGER_NAME = "Anonymous";
+    public static final String HIDDEN_VILLAGER_DESC = "Hidden from the world, can hack anything that uses electricity";
 
-  private final String name;
 
-  private final String description;
-  
-  private Integer age;
+    @MyNotNull //@NotNull
+    private final String name;
 
-  int health;
+    @MyNotNull //@NotNull
+    private final String description;
 
-  private Villager() {
-    this(HIDDEN_VILLAGER_NAME, HIDDEN_VILLAGER_DESC);
-  }
-  
-  private Villager(Integer age , String name) {
-    this(name, HIDDEN_VILLAGER_DESC);
-    this.age = age;
-  }
+    private Integer age;
 
-  private Villager(String name, Integer age) {
-    this(name, HIDDEN_VILLAGER_DESC);
-    this.age = age;
-  }
+    int health;
 
-  public Villager(final String name, final String description) {
-    this.name = name;
-    this.description = description;
-  }
+    private Villager() {
+        this(HIDDEN_VILLAGER_NAME, HIDDEN_VILLAGER_DESC);
+    }
 
-  public void setHealth(int health) {
-    this.health = health;
-  }
+    private Villager(Integer age , String name) {
+        this(name, HIDDEN_VILLAGER_DESC);
+        this.age = age;
+    }
 
-  @Override
-  public String toString() {
-    return "Villager{" +
-        "name='" + name + '\'' +
-        ", description='" + description + '\'' +
-        ", health=" + health +
-        '}';
-  }
+    private Villager(String name, Integer age) {
+        this(name, HIDDEN_VILLAGER_DESC);
+        this.age = age;
+    }
+
+    @MyBuilderProperty(name="init")
+    public Villager(@MyNotNull final String name, @MyNotNull final String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    @MyBuilderProperty(name="health")
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    @Override
+    public String toString() {
+        return "Villager{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", health=" + health +
+                '}';
+    }
 }
