@@ -1,9 +1,7 @@
-//package efs.task.reflection.json;
+package efs.task.reflection.json;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -11,7 +9,8 @@ import java.util.Date;
 /**
  * TODO: Użyj tu odpowiednich adnotacji z biblioteki Jackson
  */
-
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "id", "name", "price", "productionDate", "expiryDate"})
 public class ProductDTO {
 
